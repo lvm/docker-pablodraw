@@ -7,10 +7,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /asc \
     && wget http://download.picoe.ca/pablodraw/3.2/PabloDraw-3.2.1.zip \
-    -O /asc/PabloDraw.zip
-
-WORKDIR /asc
-
-RUN unzip PabloDraw.zip
+    -O /asc/PabloDraw.zip \
+    && cd /asc \
+    && unzip PabloDraw.zip
 
 ENTRYPOINT [ "mono /asc/PabloDraw.exe" ]
